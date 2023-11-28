@@ -1,5 +1,6 @@
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
+import numpy as np
 
 from datetime import datetime
 
@@ -24,8 +25,21 @@ class model_creation:
         self.separate_data()
 
     def separate_data(self):
-        self.X = self.df.loc[:, self.descr_columns]
-        self.y = self.df.loc[:, self.target_column]
+
+        range_labels = range(1, len(self.df))
+        labels = self.df["label"].unique()
+        dict_labels = dict(zip(labels, range_labels))
+        self.df["label"] = self.df["label"].map(dict_labels)
+
+        self.df_log = self.df.copy()
+        self.df_log["temperature"] = np.log(self.df_log["temperature"])
+        self.df_log["humidity"] = np.log(self.df_log["humidity"])
+        self.df_log["ph"] = np.log(self.df_log["ph"])
+        self.df_log["rainfall"] = np.log(self.df_log["rainfall"])
+
+        self.X = self.df_log.loc[:, self.descr_columns]
+        self.y = self.df_log.loc[:, self.target_column]
+        breakpoint()
 
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             self.X, self.y, test_size=0.2
@@ -105,12 +119,12 @@ if __name__=="__main__":
     df = pd.read_csv(data_path, sep=",")
 
 
-    pdata_n = model_creation(df, "N", ["P", "temperature", "humidity", "ph", "rainfall"])
-    pdata_p = model_creation(df, "P", ["temperature", "humidity", "ph", "rainfall"])
-    pdata_k = model_creation(df, "K", ["N", "P", "temperature", "humidity", "ph", "rainfall"])
+    pdata_n = model_creation(df, "N", ["P", "temperature", "humidity", "ph", "rainfall", "label"])
+    pdata_p = model_creation(df, "P", ["temperature", "humidity", "ph", "rainfall", "label"])
+    pdata_k = model_creation(df, "K", ["N", "P", "temperature", "humidity", "ph", "rainfall", "label"])
 
     model_n = pdata_n.train_model("XGBRegressor", learning_rate=0.1, max_depth=5, n_estimators=100)
-    model_P = pdata_p.train_model("DecisionTreeRegressor", max_depth=15, min_samples_leaf=10)
+    model_P = pdata_p.train_model("XGBRegressor", learning_rate=0.1, max_depth=5, n_estimators=100)
     model_K = pdata_k.train_model("XGBRegressor", learning_rate=0.1, max_depth=5, n_estimators=200)
 
     pdata_n.run_allover("model_recommentation_n.pkl")
