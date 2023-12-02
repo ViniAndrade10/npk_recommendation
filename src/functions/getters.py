@@ -26,18 +26,26 @@ class Farfetch_Information:
 
     def get_temperature(self):
         self.temperature = self.df["temperature"].mean()
+        self.temperature_min = self.df["temperature"].min()
+        self.temperature_max = self.df["temperature"].max()
 
 
     def get_humidity(self):
         self.humidity = self.df["humidity"].mean()
+        self.humidity_min = self.df["humidity"].min()
+        self.humidity_max = self.df["humidity"].max()
 
 
     def get_ph(self):
         self.ph = self.df["ph"].mean()
+        self.ph_min = self.df["ph"].min()
+        self.ph_max = self.df["ph"].max()
 
 
     def get_rainfall(self):
         self.rainfall = self.df["rainfall"].mean()
+        self.rainfall_min = self.df["rainfall"].min()
+        self.rainfall_max = self.df["rainfall"].max()
 
 
     def get_labels(self):
