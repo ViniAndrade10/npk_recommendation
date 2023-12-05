@@ -29,7 +29,7 @@ def delete_row(path, id=None, col=None, value=None):
 
 
 if __name__=="__main__":
-    root_path = Path(__file__).resolve().parent.parent
+    root_path = Path(__file__).resolve().parent.parent.parent
     file = "model_training.db"
     path = os.path.join(root_path, "database", file)
     delete_row(path=path, id=4, col="model_name", value="Model_5")
