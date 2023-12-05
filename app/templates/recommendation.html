@@ -1,0 +1,68 @@
+{% extends 'base.html'%}
+
+    {% block conteudo%}
+        <div class="content-recommendation">
+            <div class="content-inputs">
+
+                <form action="/recommendation-model" method="post">
+                    <label class="label-crop">Select Crop</label>
+                    <select class="select-crop" name="label" value="{{label}}">
+                        {% for crop in labels %}
+                            <option value="{{ crop|title }}" {% if label == crop|title %}selected{% endif %}> {{crop|title}} </option>
+                        {% endfor %}
+                    </select>
+
+                    <label class="label-input-number">Temperature (ºC)</label>
+                    <input type="number" class="input-number" name="temperature" min="0.0" max="100.0" step="0.1" value="{{temperature}}">
+                    
+                    <label class="label-input-number">Humidity (%)</label>
+                    <input type="number" class="input-number" name="humidity" min="0.0" max="100.0" step="0.1" value="{{humidity}}">
+
+                    <label class="label-input-number">pH</label>
+                    <input type="number" class="input-number" name="ph" min="0.0" max="14.0" step="0.1" value="{{ph}}">
+                    
+                    <label class="label-input-number">Rainfall (mm / Month)</label>
+                    <input type="number" class="input-number" name="rainfall" min="0.0" max="1000.0" step="0.1" value="{{rainfall}}">
+                    <button type="submit">Simular</button>
+                </form>
+            </div>
+
+            <div class="content-result">
+                <div class="titles-result">
+                    <H2>N</H2>
+                    <H2>P</H2>
+                    <H2>K</H2>
+                </div>
+            <div class="content-values">
+                <div class="values-result">
+                    <H2>{{predict_n}}</H2>
+                    <H2>{{predict_p}}</H2>
+                    <H2>{{predict_k}}</H2>
+                </div>
+            </div>
+        </div>
+
+        <!-- <script>
+            function getData() {
+                var label = $("label").val();
+                var temperature = $("temperature").val();
+                var humidity = $("humidity").val();
+                var ph = $("ph").val();
+                var rainfall = $("temperature").val();
+
+                $.ajax({
+                    type:"GET",
+                    url:"/recommendation-model",
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify({
+                        "label":label,
+                        "temperature":temperature,
+                        "humidity":humidity,
+                        "ph":ph,
+                        "rainfall":rainfall
+                    }),
+                });
+            }
+        </script> -->
+
+    {% endblock%}

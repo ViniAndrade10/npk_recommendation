@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif
+}
+
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url(farming_background.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    position: relative;
+    color: #000;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header .navigation a{
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    border-radius: 3px;
+    transition: 0.3s;
+    transition-property: backgroud;
+}
+
+
+header .navigation a:hover{
+    background: #fff;
+}
+
+.content {
+    margin: 60px 100px;
+}
+
+.content h2{
+    color: #23422c;
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin-bottom: 30px;
+    max-width: 1200px;
+}
+
+.content p{
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    max-width: 650px;
+    font-weight: 500;
+}
+
+.content .start-btn {
+    color: #23422c;
+    background-color: #fbf4eb;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.content .start-btn:hover{
+    color: #fbf4eb;
+    background-color: #23422c;
+}
+
+.content-recommendation {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    margin: 50px;
+    padding: 20px;
+    height: 520px;
+    display: inline-block;
+}
+
+.content-inputs .label-crop{
+    color: #000;
+    margin-top: 5px;
+    margin-left: 5px;
+    display: flex;
+
+}
+
+.content-inputs .select-crop {
+    padding: 10px;
+    text-align:start;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-weight: 300;
+    font-size: 20px;
+    align-content: baseline;
+    align-items: baseline;
+    width: 330px;
+}
+
+.content-inputs .label-input-number {
+    color: #000;
+    display: flex;
+    margin-top: 30px;
+    margin-left: 5px;
+}
+
+.content-inputs .input-number {
+    display: flex;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 10px 0px;
+    font-weight: 300;
+    font-size: 20px;
+    width: 330px;
+    text-align: center;
+}
+
+.content-inputs .input-number::-webkit-inner-spin-button {
+    margin:0px;
+    padding: 5px;
+    margin-right: 0px;
+    padding-left: 30px;
+    padding-top: 40px;
+}
+
+.content-inputs .input-number::-webkit-outer-spin-button {
+    margin:0px;
+    padding: 5px;
+    margin-right: 0px;
+    padding-left: 30px;
+    padding-top: 40px;
+}
+
+
+.content-result {
+    position:absolute;
+    left: 300px;
+    bottom: 430px;
+    float: left;
+    width: 1100px;
+}
+
+.content-result .titles-result H2 {
+    display: inline;
+    line-height: 30px;
+    color: #23422c;
+    font-weight: 600;
+    margin-left: 230px;
+    font-size: 50px;
+}
+
+.content-values {
+    position:absolute;
+    left: 40px;
+    top: 90px;
+    float: left;
+    width: 1100px;
+}
+
+.content-values .values-result H2 {
+    display: inline;
+    line-height: 50px;
+    color: #23422c;
+    font-weight: 800;
+    margin-left: 113px;
+    font-size: 50px;
+}
+.content-values .values-result H2:first-child {
+    margin-left: 140px;
+}
